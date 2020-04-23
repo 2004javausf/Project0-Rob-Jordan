@@ -1,0 +1,18 @@
+2020-04-23 15:01:00,627 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-04-23 15:01:38,855 [Worker-2: Creating project "Project0"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.revature.bank:Project0:0.0.1-SNAPSHOT @ C:\Users\rob_k\Documents\Revature\GIT\Project 0\Project0-Rob-Jordan\Project0\pom.xml.
+2020-04-23 15:01:40,033 [Worker-2: Creating project "Project0"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Project0/src/main/java
+2020-04-23 15:01:40,034 [Worker-2: Creating project "Project0"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /Project0/src/main/resources
+2020-04-23 15:01:40,036 [Worker-2: Creating project "Project0"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Project0/src/test/java
+2020-04-23 15:01:40,037 [Worker-2: Creating project "Project0"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /Project0/src/test/resources
+2020-04-23 15:01:41,565 [Worker-4: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-23 15:01:41,574 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-23 15:01:41,576 [Worker-4: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-23 15:01:41,581 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-23 15:04:50,388 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-23 15:04:50,397 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-23 15:04:50,398 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-23 15:04:50,403 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-23 15:04:58,577 [Worker-9: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-23 15:04:58,583 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-23 15:04:58,584 [Worker-9: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-23 15:04:58,590 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
