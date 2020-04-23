@@ -1,9 +1,86 @@
 package com.revature.beans;
 
 public class Customer {
+	private int customerId;
+	private String firstName;
+	private String lastName;
+	private String userName;
+	private String password;
+	private int accountNumber;
+	private int phoneNumber;
+	private int statusCode;
 	
-	public static void main(String[] args) {
-		System.out.println("Is it running");
+	
+	
+	
+	public Customer(int customerId, String firstName, String lastName, String userName, String password,
+			int accountNumber, int phoneNumber, int statusCode) {
+		super();
+		this.customerId = customerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.accountNumber = accountNumber;
+		this.phoneNumber = phoneNumber;
+		this.statusCode = statusCode;
 	}
+	
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public int getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", userName=" + userName + ", password=" + password + ", accountNumber=" + accountNumber
+				+ ", phoneNumber=" + phoneNumber + ", statusCode=" + statusCode + "]";
+	}
+	
 
 }
