@@ -135,3 +135,33 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 15:10:22.583
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.LixOwIeZ => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 17:22:18.253
+!MESSAGE Preparing classpath changed notification Project0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 17:22:18.254
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 17:22:18.271
+!MESSAGE classpath=23 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 17:22:18.276
+!MESSAGE buffering callback sts4.classpath.WfrTDaPL Project0 false 23
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 17:22:18.279
+!MESSAGE executing callback sts4.classpath.WfrTDaPL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-23 17:22:18.284
+!MESSAGE executing callback sts4.classpath.WfrTDaPL SUCCESS [done]
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-04-23 17:22:19.212
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-04-23 17:22:19.215
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-04-23 17:25:00.588
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-04-23 17:25:00.590
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
