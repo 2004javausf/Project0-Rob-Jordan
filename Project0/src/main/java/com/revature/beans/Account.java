@@ -1,5 +1,7 @@
 package com.revature.beans;
 
+import java.util.Scanner;
+
 public class Account {
 	
 	private int accountNumber;
@@ -38,24 +40,73 @@ public class Account {
 	}
 	
 	//To make Deposits
-	public void deposit(int amount) {
+	public double addTo(double amount) {
+		if(amount != 0) {
+			accountBalance = accountBalance + amount;
+			//System.out.println("Your new balance is: " + accountBalance);
+		}
+		else if (amount < 0) {
+			//System.out.println("Amount can not be a negative number");
+		}
+		
+		return amount;
+	}
+	public double deposit(double amount) {
 		
 		if(amount != 0) {
 			accountBalance = accountBalance + amount;
-			System.out.println("Your new balance is: " + accountBalance);
+			//System.out.println("Your new balance is: " + accountBalance);
+			
+			}
+			else if (amount < 0) {
+				System.out.println("Amount can not be a negative number");
 			
 		}
+		return accountBalance;
 	}
 	
 	//To withdraw
-	public void withdraw(int amount) {
+	
+	public double subtractFrom(double amount) {
+		if(amount != 0) {
+			accountBalance = accountBalance - amount;
+			//System.out.println("Your new balance is: " + accountBalance);
+		}
+		else if (amount < 0) {
+			//System.out.println("Amount can not be a negative number");
+		}
+		
+		return amount;
+	}
+	public double withdraw(double amount) {
 		
 		if(amount != 0) {
 			accountBalance = accountBalance - amount;
-			System.out.println("Your new balance is: " + accountBalance);
+			//System.out.println("Your new balance is: " + accountBalance);
+		}
+		else if (amount < 0) {
+			//System.out.println("Amount can not be a negative number");
 		}
 		
+		return accountBalance;
+		
 	}
+	
+//	//To make transfers
+//	public void transfer(double amount) {
+//		
+//		double tempBalance = 0;
+//		if(amount != 0) {
+//		tempBalance = this.accountBalance - amount;
+//		Scanner sc = new Scanner(System.in);
+//		int input = sc.nextInt();
+//		if (input == 2) {
+//			a2.deposit(tempBalance);
+//		}
+//		
+//		
+//		}	
+//	}
 	
 
 
