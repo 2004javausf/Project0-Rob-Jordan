@@ -36,6 +36,27 @@ public class Account {
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
 	}
+	
+	//To make Deposits
+	public void deposit(int amount) {
+		
+		if(amount != 0) {
+			accountBalance = accountBalance + amount;
+			System.out.println("Your new balance is: " + accountBalance);
+			
+		}
+	}
+	
+	//To withdraw
+	public void withdraw(int amount) {
+		
+		if(amount != 0) {
+			accountBalance = accountBalance - amount;
+			System.out.println("Your new balance is: " + accountBalance);
+		}
+		
+	}
+	
 
 
 }
