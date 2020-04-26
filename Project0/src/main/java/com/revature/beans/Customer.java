@@ -7,14 +7,14 @@ public class Customer {
 	private String userName;
 	private String password;
 	private int accountNumber;
-	private int phoneNumber;
+	private long phoneNumber;
 	private int statusCode;
 	
 	
 	
 	
 	public Customer(int customerId, String firstName, String lastName, String userName, String password,
-			int accountNumber, int phoneNumber, int statusCode) {
+			int accountNumber, long phoneNumber, int statusCode) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
@@ -25,6 +25,8 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 		this.statusCode = statusCode;
 	}
+	
+	
 	
 	public int getCustomerId() {
 		return customerId;
@@ -62,10 +64,10 @@ public class Customer {
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public int getStatusCode() {
