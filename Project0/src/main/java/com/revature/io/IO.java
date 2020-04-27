@@ -38,7 +38,7 @@ public class IO {
 	
 //=======READ A STRING FROM A FILE==========================================//
 	
-	public String readInputStreamContents() {
+	public static String readInputStreamContents() {
 		InputStream is = null;
 		File file = new File("applicants.txt");
 		StringBuilder s = new StringBuilder();
