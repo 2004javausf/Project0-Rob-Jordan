@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.revature.beans.Customer;
+
 public class IO {
 	//Write data to a file.
 	

@@ -26,6 +26,18 @@ public class Customer {
 		this.statusCode = statusCode;
 	}
 	
+	public Customer(int customerId, String firstName, String lastName, String userName, String password,
+			int accountNumber, int statusCode) {
+		super();
+		this.customerId = customerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.accountNumber = accountNumber;
+		this.statusCode = statusCode;
+	}
+	
 	
 	
 	public int getCustomerId() {

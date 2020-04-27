@@ -1,5 +1,6 @@
 package com.revature.driver;
 import java.util.Scanner;
+import com.revature.io.IO;
 
 import com.revature.beans.Customer;
 
@@ -12,6 +13,7 @@ public class AccountDriver {
 		Scanner intInput = new Scanner(System.in);
 		Scanner textInput = new Scanner(System.in);
 		Scanner longInput = new Scanner(System.in);
+		IO io = new IO();
 		
 		String firstName;
 		String lastName;
