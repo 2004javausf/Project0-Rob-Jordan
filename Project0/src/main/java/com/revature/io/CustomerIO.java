@@ -7,19 +7,18 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.revature.beans.Customer;
+import com.revature.dao.CustomerDAOImpl;
 
-public class IOWithCollections {
+public class CustomerIO {
 	private static final String applicantsFile = "applicants.txt";
-	public static List<Customer> customerList = new ArrayList<Customer>();
-	public static List<Object> otherCustomerList = new ArrayList<Object>();
+
 	
-	public static void writeHumanFile() {
+	public static void writeCustomerFile() {
 		try {
-			ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(applicantsFile, true));
-			objectOut.writeObject(customerList);
+			ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(applicantsFile));
+			objectOut.writeObject(CustomerDAOImpl.customerList);
 			objectOut.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -31,32 +30,21 @@ public class IOWithCollections {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static Object readHumanFile() {
-		boolean cont = true;
+	public static void  readCustomerFile() {
 		try {
 			ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(applicantsFile));
-			while(cont) {
-				Object obj = null;
-				try {
-					obj = (Customer) objectIn.readObject();
-				}catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-				if(obj != null) {
-					otherCustomerList.add(obj);
-				} else {
-					cont = false;
-				}
-			}
-			objectIn.close();
+			CustomerDAOImpl.customerList = (ArrayList<Customer>) objectIn.readObject();
+			objectIn.close();	
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		return otherCustomerList;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

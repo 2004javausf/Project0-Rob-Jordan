@@ -1,14 +1,15 @@
 package com.revature.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.Customer;
-import com.revature.io.IO;
-import com.revature.io.IOWithCollections;
+import com.revature.io.CustomerIO;
 
 public class CustomerDAOImpl implements CustomerDAO {
+	public static List<Customer> customerList = new ArrayList<Customer>();
 
 	@Override
 	public void createCustomer() {
@@ -58,22 +59,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 			
 			Customer  customer = new Customer(1,firstName, lastName, userName, password, accountNumber, phoneNumber,status_code);
 			
-			IOWithCollections.customerList.add(customer);
-			IOWithCollections.writeHumanFile();
-
-		
 		}
 
-	@Override
-	public List<Object> getCustomers() {
-		List<Object> cList = new ArrayList<>();
-		
-		cList = IOWithCollections.otherCustomerList;
-		
-		return cList;
-		
-		
-		
-	}
+//	@Override
+//	public List<Customer> getCustomers() {
+//		IOWithCollections.readHumanFile();
+//
+//		return Roster.customerList;
+//		
+//
+//		
+//		
+//	}
 	
 }

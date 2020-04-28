@@ -7,5 +7,5 @@ import com.revature.beans.Customer;
 public interface CustomerDAO {
 	
 	public void createCustomer();
-	public List<Object> getCustomers();
+
 }

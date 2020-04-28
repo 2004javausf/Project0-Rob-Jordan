@@ -5,7 +5,7 @@ import java.util.List;
 import com.revature.beans.Customer;
 import com.revature.dao.CustomerDAO;
 import com.revature.dao.CustomerDAOImpl;
-import com.revature.io.IOWithCollections;
+import com.revature.io.CustomerIO;
 
 public class AccountDriver {
 	
@@ -13,15 +13,11 @@ public class AccountDriver {
 			
 
 	public static void main(String[] args) {
-		int i = 0;
+		CustomerIO.readCustomerFile();
 		
-//		//This allows customer to apply for an account.
 		CustomerDAO customer = AccountDriver.getCustomerDAO();
-//		//Also automatically writes then reads to the file.
-//		customer.createCustomer();
-//		
-		List<Object> cList = customer.getCustomers();
-		System.out.println(cList);		
+		
+		
 	}
 		
 	public static CustomerDAO getCustomerDAO() {
