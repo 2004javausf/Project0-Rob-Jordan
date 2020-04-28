@@ -2,11 +2,15 @@ package com.revature.beans;
 
 import java.io.Serializable;
 
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.io.CustomerIO;
+
 public class Customer implements Serializable {
-	/**
-	 * 
-	 */
+	
+
+
 	private static final long serialVersionUID = -400595318687091282L;
+	
 	
 	private int customerId;
 	private String firstName;
@@ -17,7 +21,11 @@ public class Customer implements Serializable {
 	private long phoneNumber;
 	private int statusCode;
 	
-	
+	public Customer() {
+		super();
+		CustomerDAOImpl.customerList.add(this);
+		CustomerIO.writeCustomerFile();
+	}
 	
 	
 	public Customer(int customerId, String firstName, String lastName, String userName, String password,
@@ -31,10 +39,12 @@ public class Customer implements Serializable {
 		this.accountNumber = accountNumber;
 		this.phoneNumber = phoneNumber;
 		this.statusCode = statusCode;
+		CustomerDAOImpl.customerList.add(this);
+		CustomerIO.writeCustomerFile();
 	}
 	
 	public Customer(int customerId, String firstName, String lastName, String userName, String password,
-			int accountNumber, int statusCode) {
+		int accountNumber, int statusCode) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
@@ -43,6 +53,8 @@ public class Customer implements Serializable {
 		this.password = password;
 		this.accountNumber = accountNumber;
 		this.statusCode = statusCode;
+		CustomerDAOImpl.customerList.add(this);
+		CustomerIO.writeCustomerFile();
 	}
 	
 	

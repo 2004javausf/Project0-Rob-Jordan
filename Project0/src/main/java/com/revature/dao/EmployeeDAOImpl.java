@@ -10,6 +10,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	public static List<Employee> employeeList = new ArrayList<Employee>();
 	
 	//to find an employee by first name
+	@Override
 	public Employee findEmployeeByName(String inputName) {
 		for(int i = 0; i < employeeList.size(); i++) {
 			String name = employeeList.get(i).getFirstName();
