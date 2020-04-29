@@ -1,12 +1,30 @@
 package com.revature.beans;
 
-public class Employee {
+import java.io.Serializable;
+
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.dao.EmployeeDAOImpl;
+import com.revature.io.CustomerIO;
+import com.revature.io.EmployeeIO;
+
+public class Employee implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -400082951008083066L;
+	
+	
 	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private String username;
 	private String password;
 	
+	public Employee() {
+		super();
+		EmployeeDAOImpl.employeeList.add(this);
+		EmployeeIO.writeEmployeeFile();
+	}
 	
 	
 	public Employee(int employeeId, String firstName, String lastName, String username, String password) {
@@ -16,12 +34,8 @@ public class Employee {
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-	}
-	
-	
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
+		EmployeeDAOImpl.employeeList.add(this);
+		EmployeeIO.writeEmployeeFile();
 	}
 
 
