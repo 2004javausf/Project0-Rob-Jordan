@@ -23,6 +23,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		int accountNumber = 0;
 		long phoneNumber = 0;
 		int status_code =0;
+		boolean isApproved = false;
 		
 
 		//Code for giving out a status code.
@@ -55,7 +56,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 				accountNumber = 2;
 			}
 			
-			Customer  customer = new Customer(1,firstName, lastName, userName, password, accountNumber, phoneNumber,status_code);
+			Customer  customer = new Customer(1,firstName, lastName, userName, password, accountNumber, phoneNumber,status_code, isApproved);
 			
 		}
 
