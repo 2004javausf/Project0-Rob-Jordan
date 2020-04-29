@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.beans.Account;
 import com.revature.beans.Customer;
+import com.revature.io.AccountsIO;
+import com.revature.io.CustomerIO;
+import com.revature.service.BankMethods;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	public static List<Customer> customerList = new ArrayList<Customer>();
 
 	@Override
 	public void createCustomer() {
+		CustomerIO.readCustomerFile();
+		AccountsIO.readAccountFile();
+		List<Customer> cList = CustomerDAOImpl.customerList;
+		List<Account>  accList = AccountDAOImpl.accountList;
 		Scanner intInput = new Scanner(System.in);
 		Scanner textInput = new Scanner(System.in);
 		Scanner longInput = new Scanner(System.in);
@@ -45,20 +53,57 @@ public class CustomerDAOImpl implements CustomerDAO {
 			phoneNumber = longInput.nextLong();
 			System.out.println("Make a user name.");
 			userName = textInput.nextLine();
+			for (int i = 0; i < cList.size(); i++) {
+				while (userName.equals(cList.get(i).getUserName())) {
+					userName = textInput.nextLine();
+				}
+			}
 			System.out.println("Come up with a password.");
 			password = textInput.nextLine();
 			System.out.println("What kind account do you want to open?");
 			System.out.println("1.) Checking 2.) Saving");
 			answer = intInput.nextInt();
 			if(answer ==1) {
-				accountNumber = 1;
-			}else if( answer ==2) {
-				accountNumber = 2;
+				accountNumber = accList.size() + 1;
+				double accountBalance = 0;
+				String accountName = "Checking";	
+				Account account = new Account(accountNumber, accountBalance, accountName);
+			}else if( answer == 2) {
+				accountNumber = accList.size() + 1;
+				double accountBalance = 0;
+				String accountName = "Savings";
+				Account account = new Account(accountNumber, accountBalance, accountName);
+			}
+			
+			System.out.println("Would you like to make another account? Y/N");
+			String choice = textInput.nextLine();
+			if(choice.equalsIgnoreCase("y")) {
+				createCustomer();
+			}else if(choice.equalsIgnoreCase("n")) {
+				System.out.println("Thank you!");
 			}
 			
 			Customer  customer = new Customer(1,firstName, lastName, userName, password, accountNumber, phoneNumber,status_code, isApproved);
 			
 		}
+	
+	
+	public static void main(String[] args) {
+		CustomerIO.readCustomerFile();
+		AccountsIO.readAccountFile();
+		BankMethods activity = new BankMethods();
+//		System.out.println(CustomerDAOImpl.customerList);
+//		System.out.println(AccountDAOImpl.accountList);
+		List<Customer> cList = CustomerDAOImpl.customerList;
+		List<Account>  accList = AccountDAOImpl.accountList;
+		for (int i = 0; i < cList.size()-1; i++) {
+			if(accList.get(i).getAccountNumber() == cList.get(i).getAccountNumber()) {
+				activity.deposit(accList.get(i), 50);
+			}
+		}
+		System.out.println(CustomerDAOImpl.customerList);
+		System.out.println(AccountDAOImpl.accountList);
+	}
 
 //	@Override
 //	public List<Customer> getCustomers() {

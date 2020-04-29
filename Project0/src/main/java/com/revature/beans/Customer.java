@@ -40,6 +40,7 @@ public class Customer implements Serializable {
 		this.accountNumber = accountNumber;
 		this.phoneNumber = phoneNumber;
 		this.statusCode = statusCode;
+		this.isApproved = isApproved;
 		CustomerDAOImpl.customerList.add(this);
 		CustomerIO.writeCustomerFile();
 	}
@@ -109,12 +110,20 @@ public class Customer implements Serializable {
 		this.statusCode = statusCode;
 	}
 
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
+	
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", userName=" + userName + ", password=" + password + ", accountNumber=" + accountNumber
-				+ ", phoneNumber=" + phoneNumber + ", statusCode=" + statusCode + "]";
+				+ ", phoneNumber=" + phoneNumber + ", statusCode=" + statusCode + "] \n";
 	}
-	
 
 }
