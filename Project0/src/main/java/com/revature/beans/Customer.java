@@ -109,6 +109,15 @@ public class Customer implements Serializable {
 		this.statusCode = statusCode;
 	}
 
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
+	
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
@@ -116,5 +125,4 @@ public class Customer implements Serializable {
 				+ ", phoneNumber=" + phoneNumber + ", statusCode=" + statusCode + "]";
 	}
 	
-
 }

@@ -3,9 +3,14 @@ package com.revature.menu;
 import java.util.Scanner;
 
 import com.revature.beans.Account;
-import com.revarture.driver.AccountDriver;
+import com.revature.beans.Customer;
+import com.revature.dao.*;
+import com.revature.io.EmployeeIO;
+import com.revature.service.BankMethods;
 
 public class Menu {
+	static BankMethods bankMethods = new BankMethods();
+	static Customer createCustomer = new Customer();
 		
 		static Scanner scan = new Scanner(System.in);
 		public static void startMenu() {
@@ -25,7 +30,7 @@ public class Menu {
 				System.out.println("Goodbye!");
 				break;
 			default:
-				System.out.println("Please enter a valid option");
+				System.out.println("Please enter a valid option.");
 				startMenu();
 				break;
 			}
@@ -36,12 +41,16 @@ public class Menu {
 			System.out.println("Press 1 to deposit");
 			System.out.println("Press 2 to withdaw");
 			System.out.println("Press 3 to transfer");
-			System.out.println("Press 4 to Main Menu");
+			System.out.println("Press 4 to go to the Main Menu");
 			System.out.println("Press 5 to exit");
 			int choice = scan.nextInt();
+			double amount = scan.nextDouble();
 			switch(choice) {
 			case 1:
+				System.out.println("Enter your Account Number");
+				double accountNumber = scan.nextDouble();
 				
+				bankMethods.deposit(accountNumber, 0);;
 				break;
 			case 2:
 				
@@ -55,7 +64,42 @@ public class Menu {
 			case 5:
 				
 				break;
+			default:
+				System.out.println("Please enter a valid option.");
 			}
+			
+		}
+		
+		public static void otherServicesMenu() {
+			System.out.println("What would you like to do?");
+			System.out.println("Press 1 to Create an account");
+			System.out.println("Press 2 to Log in as an Employee");
+			System.out.println("Press 3 to Log in as an Administrator");
+			int choice = scan.nextInt();
+			switch(choice) {	
+				case 1:
+					
+					break;
+				case 2:
+					System.out.println("Enter your user name");
+					String userInput = scan.nextLine();
+					EmployeeIO.findEmployeeByUserName(userInput);
+					System.out.println("Enter your password");
+					String inputPassword = scan.nextLine();
+					EmployeeIO.findEmployeePassword(inputPassword);
+					employeeMenu();
+					break;
+				case 3:
+					System.out.println("Enter your user name");
+					String userInput = scan.nextLine();
+					EmployeeIO.findAdminByUserName(userInput);
+					System.out.println("Enter your password");
+					String inputPassword = scan.nextLine();
+					EmployeeIO.findAdminPassword(inputPassword);
+					adminMenu();
+					break;
+			}
+			
 		}
 
 }

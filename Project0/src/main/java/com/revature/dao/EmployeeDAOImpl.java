@@ -19,7 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	}
 
 	@Override
-	public Employee findEmployeeByName(String inputName) {
+	public Employee findEmployeeByUserName(String inputUserName) {
 		EmployeeIO.readEmployeeFile();
 		return null;
 	}
@@ -28,6 +28,12 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		Scanner ints = new Scanner(System.in);
 		Scanner strings = new Scanner(System.in);
 		
+		
+	}
+
+	@Override
+	public void createEmployee() {
+		// TODO Auto-generated method stub
 		
 	}
 
