@@ -1,20 +1,36 @@
 package com.revature.beans;
 
-public class Customer {
+import java.io.Serializable;
+
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.io.CustomerIO;
+
+public class Customer implements Serializable {
+	
+
+
+	private static final long serialVersionUID = -400595318687091282L;
+	
+	
 	private int customerId;
 	private String firstName;
 	private String lastName;
 	private String userName;
 	private String password;
 	private int accountNumber;
-	private int phoneNumber;
+	private long phoneNumber;
 	private int statusCode;
+	private boolean isApproved;
 	
-	
+	public Customer() {
+		super();
+		CustomerDAOImpl.customerList.add(this);
+		CustomerIO.writeCustomerFile();
+	}
 	
 	
 	public Customer(int customerId, String firstName, String lastName, String userName, String password,
-			int accountNumber, int phoneNumber, int statusCode) {
+			int accountNumber, long phoneNumber, int statusCode, boolean isApproved) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
@@ -24,7 +40,25 @@ public class Customer {
 		this.accountNumber = accountNumber;
 		this.phoneNumber = phoneNumber;
 		this.statusCode = statusCode;
+		CustomerDAOImpl.customerList.add(this);
+		CustomerIO.writeCustomerFile();
 	}
+	
+	public Customer(int customerId, String firstName, String lastName, String userName, String password,
+		int accountNumber, int statusCode) {
+		super();
+		this.customerId = customerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.accountNumber = accountNumber;
+		this.statusCode = statusCode;
+		CustomerDAOImpl.customerList.add(this);
+		CustomerIO.writeCustomerFile();
+	}
+	
+	
 	
 	public int getCustomerId() {
 		return customerId;
@@ -62,10 +96,10 @@ public class Customer {
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public int getStatusCode() {

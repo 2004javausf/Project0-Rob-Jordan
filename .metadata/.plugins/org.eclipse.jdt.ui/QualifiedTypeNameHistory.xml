@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="com.revature.io.IOWithCollections"/>
+    <fullyQualifiedTypeName name="com.revature.roster.Roster"/>
+    <fullyQualifiedTypeName name="com.revature.dao.CustomerDAOImpl"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.revature.dao.AccountDAOImpl"/>
+    <fullyQualifiedTypeName name="com.revature.io.AccountsIO"/>
+</qualifiedTypeNameHistroy>
