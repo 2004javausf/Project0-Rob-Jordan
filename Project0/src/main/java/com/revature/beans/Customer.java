@@ -20,6 +20,7 @@ public class Customer implements Serializable {
 	private int accountNumber;
 	private long phoneNumber;
 	private int statusCode;
+	private boolean isApproved;
 	
 	public Customer() {
 		super();
@@ -29,7 +30,7 @@ public class Customer implements Serializable {
 	
 	
 	public Customer(int customerId, String firstName, String lastName, String userName, String password,
-			int accountNumber, long phoneNumber, int statusCode) {
+			int accountNumber, long phoneNumber, int statusCode, boolean isApproved) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;

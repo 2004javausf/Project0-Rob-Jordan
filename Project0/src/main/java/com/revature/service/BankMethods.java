@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import com.revature.beans.Account;
+import com.revature.beans.Customer;
 
 public class BankMethods {
 	
@@ -13,9 +14,9 @@ public class BankMethods {
 	}
 	
 	public void transfer(Account account1, Account account2, double amount) {
-		double tempValue = 0;
-		tempValue = account1.getAccountBalance() - amount;
-		account2.setAccountBalance(account2.getAccountBalance()+tempValue);
+		account1.setAccountBalance(account1.getAccountBalance()-amount);
+		account2.setAccountBalance(account2.getAccountBalance()+amount);
 	}
+	
 
 }
