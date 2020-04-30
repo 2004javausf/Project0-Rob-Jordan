@@ -19,6 +19,7 @@ public class Employee implements Serializable{
 	private String lastName;
 	private String userName;
 	private String password;
+	private int status_code;
 	
 	public Employee() {
 		super();
@@ -27,15 +28,26 @@ public class Employee implements Serializable{
 	}
 	
 	
-	public Employee(int employeeId, String firstName, String lastName, String userName, String password) {
+	public Employee(int employeeId, String firstName, String lastName, String userName, String password, int status_code) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+		this.status_code = status_code;
 		EmployeeDAOImpl.employeeList.add(this);
 		EmployeeIO.writeEmployeeFile();
+	}
+
+
+	public int getStatus_code() {
+		return status_code;
+	}
+
+
+	public void setStatus_code(int status_code) {
+		this.status_code = status_code;
 	}
 
 
@@ -74,7 +86,10 @@ public class Employee implements Serializable{
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", userName=" + userName + ", password=" + password + "]";
+				+ ", userName=" + userName + ", password=" + password + ", status_code=" + status_code + "]";
 	}
+
+
+
 	
 }

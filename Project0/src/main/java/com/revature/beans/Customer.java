@@ -110,7 +110,7 @@ public class Customer implements Serializable {
 		this.statusCode = statusCode;
 	}
 
-	public boolean isApproved() {
+	public boolean getIsApproved() {
 		return isApproved;
 	}
 

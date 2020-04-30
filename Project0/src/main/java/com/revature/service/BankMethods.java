@@ -22,5 +22,13 @@ public class BankMethods {
 		AccountsIO.writeAccountFile();
 	}
 	
+	public static void approveDeny(Customer customer) {
+		if(customer.getIsApproved() == true) {
+		customer.setApproved(false); 	
+		}else {
+			customer.setApproved(true);
+		}
+	}
+	
 
 }

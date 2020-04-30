@@ -31,20 +31,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		String password;
 		int accountNumber = 0;
 		long phoneNumber = 0;
-		int status_code =0;
+		int status_code = 1;
 		boolean isApproved = false;
 		
 
-		//Code for giving out a status code.
-			System.out.println("Are you registering as an 1.)Customer or an 2.)Employee?");
-			answer =intInput.nextInt();
-			if(answer == 1) {
-				status_code = 1;
-				answer = 0;
-			}else if(answer == 2) {
-				status_code = 2;
-				answer =0;
-			}
 		//END OF STATUS CODE BLOCK
 			System.out.println("What is your first name?");
 			firstName = textInput.nextLine();
@@ -111,35 +101,5 @@ public class CustomerDAOImpl implements CustomerDAO {
 		System.out.println("Password does not match");
 		
 		return null;
-	}
-	
-	
-//	public static void main(String[] args) {
-//		CustomerIO.readCustomerFile();
-//		AccountsIO.readAccountFile();
-//		BankMethods activity = new BankMethods();
-////		System.out.println(CustomerDAOImpl.customerList);
-////		System.out.println(AccountDAOImpl.accountList);
-//		List<Customer> cList = CustomerDAOImpl.customerList;
-//		List<Account>  accList = AccountDAOImpl.accountList;
-//		for (int i = 0; i < cList.size()-1; i++) {
-//			if(accList.get(i).getAccountNumber() == cList.get(i).getAccountNumber()) {
-//				activity.deposit(accList.get(i), 50);
-//			}
-//		}
-//		System.out.println(CustomerDAOImpl.customerList);
-//		System.out.println(AccountDAOImpl.accountList);
-//	}
-
-//	@Override
-//	public List<Customer> getCustomers() {
-//		IOWithCollections.readHumanFile();
-//
-//		return Roster.customerList;
-//		
-//
-//		
-//		
-//	}
-	
+	}	
 }

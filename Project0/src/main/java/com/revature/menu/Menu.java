@@ -5,18 +5,29 @@ import java.util.Scanner;
 
 import com.revature.beans.Account;
 import com.revature.beans.Customer;
+import com.revature.beans.Employee;
+import com.revature.dao.AccountDAOImpl;
+import com.revature.dao.AdminDAO;
+import com.revature.dao.AdminDAOImpl;
+import com.revature.dao.CustomerDAO;
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.dao.EmployeeDAO;
+import com.revature.dao.EmployeeDAOImpl;
+import com.revature.io.AdminIO;
 import com.revature.io.CustomerIO;
-import com.revature.dao.*;
 import com.revature.io.EmployeeIO;
 import com.revature.service.BankMethods;
 
 public class Menu {
 	static BankMethods bankMethods = new BankMethods();
 	
+	
 		
 		static Scanner scan = new Scanner(System.in);
 		public static void startMenu() {
 			CustomerIO.readCustomerFile();
+			EmployeeIO.readEmployeeFile();
+			AdminIO.readAdminFile();
 			System.out.println("Welcome to your favorite bank!");
 			System.out.println("Press 1 to Log in");
 			System.out.println("Press 2 for other services");
@@ -103,28 +114,104 @@ public class Menu {
 			int choice = scan.nextInt();
 			switch(choice) {	
 				case 1:
+					System.out.println("Press 1 to apply for an account");
+					System.out.println("Press 2 to register as an employee");
+					System.out.println("Press 3 to regiser as an admin");
+					int choice2 = scan.nextInt();
+					switch(choice2) {
+					case 1:
+						getCustomerDAO().createCustomer();
+						System.out.println("Your application was submitted! Please check status after 24 hours");
+						break;
+					case 2:
+						getEmployeeDAO().createEmployee();
+						otherServicesMenu();
+						break;
+					case 3:
+						getAdminDAO().createAdmin();
+						otherServicesMenu();
+						break;
+					default:
+					}
 					
 					break;
 				case 2:
+					Scanner employeeLogIn = new Scanner(System.in);
 					System.out.println("Enter your user name");
-					String userInput = scan.nextLine();
-					EmployeeIO.findEmployeeByUserName(userInput);
+					String  userInput = employeeLogIn.nextLine();
 					System.out.println("Enter your password");
-					String inputPassword = scan.nextLine();
+					String inputPassword = employeeLogIn.nextLine();
 					EmployeeIO.findEmployeePassword(inputPassword);
+					Employee employee = EmployeeIO.findEmployeeByUserName(userInput);
+					if(employee == null) {
+						System.out.println("Credentials don't match");
+						otherServicesMenu();
+					}
 					employeeMenu();
 					break;
-				case 3:
-					System.out.println("Enter your user name");
-					String userInput = scan.nextLine();
-					EmployeeIO.findAdminByUserName(userInput);
-					System.out.println("Enter your password");
-					String inputPassword = scan.nextLine();
-					EmployeeIO.findAdminPassword(inputPassword);
-					adminMenu();
-					break;
+//				case 3:
+//					System.out.println("Enter your user name");
+//					String userInput = scan.nextLine();
+//					EmployeeIO.findAdminByUserName(userInput);
+//					System.out.println("Enter your password");
+//					String inputPassword = scan.nextLine();
+//					EmployeeIO.findAdminPassword(inputPassword);
+//					adminMenu();
+//					break;
 			}
 			
+		}
+		
+		public static void employeeMenu() {
+			int choice;
+			Scanner sc = new Scanner(System.in);
+			Scanner in = new Scanner(System.in);
+			System.out.println("Press 1 to View Customer List");
+			System.out.println("Press 2 to View Customer's information");
+			System.out.println("Press 3 to Approve/Deny Applications");
+			choice = in.nextInt();
+			switch (choice) {
+				case 1:
+					System.out.println(CustomerDAOImpl.customerList);
+					System.out.println("Press any key to go back to the employee menu");
+					sc.next();
+					employeeMenu();		
+				break;
+				case 2:
+					Scanner textInput = new Scanner(System.in);
+					System.out.println("Enter the Customer's Username.");
+					String userName = textInput.nextLine();				
+					Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
+					System.out.println(customer);
+					System.out.println("Press any key to go back to the employee menu");
+					sc.next();
+					employeeMenu();	
+					break;
+				case 3:
+					Scanner textInput2 = new Scanner(System.in);
+					System.out.println("Enter the Customer's Username.");
+					String userName2 = textInput2.nextLine();				
+					Customer customer2 = CustomerDAOImpl.findCustomerByUserName(userName2);
+					BankMethods.approveDeny(customer2);
+					employeeMenu();
+					break;
+			default:
+				System.out.println("Please enter a valid choice");
+				employeeMenu();
+				break;
+			}
+		}
+		
+		public static CustomerDAO getCustomerDAO() {
+			return new CustomerDAOImpl();
+		}
+		
+		public static EmployeeDAO getEmployeeDAO() {
+			return new EmployeeDAOImpl();
+		}
+		
+		public static AdminDAO getAdminDAO() {
+			return new AdminDAOImpl();
 		}
 
 }
