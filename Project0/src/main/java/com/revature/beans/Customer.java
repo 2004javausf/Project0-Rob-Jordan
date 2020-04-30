@@ -125,5 +125,4 @@ public class Customer implements Serializable {
 				+ ", userName=" + userName + ", password=" + password + ", accountNumber=" + accountNumber
 				+ ", phoneNumber=" + phoneNumber + ", statusCode=" + statusCode + "] \n";
 	}
-
 }

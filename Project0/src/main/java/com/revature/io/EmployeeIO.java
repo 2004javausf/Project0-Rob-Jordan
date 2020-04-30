@@ -53,10 +53,10 @@ private static final String employeeFile = "employees.txt";
 		}
 	}
 	
-	public static Employee findEmployeeByName(String inputName) {
+	public static Employee findEmployeeByUserName(String inputUserName) {
 		for(int i = 0; i < EmployeeDAOImpl.employeeList.size(); i++) {
-			String name = EmployeeDAOImpl.employeeList.get(i).getFirstName();
-			if(inputName.equals(name)) {
+			String name = EmployeeDAOImpl.employeeList.get(i).getUserName();
+			if(inputUserName.equals(name)) {
 				return EmployeeDAOImpl.employeeList.get(i);
 			}
 		}
@@ -65,4 +65,15 @@ private static final String employeeFile = "employees.txt";
 		return null;
 	}
 
+	public static Employee findEmployeePassword(String inputPassword) {
+		for(int i = 0; i < EmployeeDAOImpl.employeeList.size(); i++) {
+			String password = EmployeeDAOImpl.employeeList.get(i).getPassword();
+			if(inputPassword.equals(password)) {
+				return EmployeeDAOImpl.employeeList.get(i);
+			}
+		}
+		System.out.println("Password does not match");
+		
+		return null;
+	}
 }
