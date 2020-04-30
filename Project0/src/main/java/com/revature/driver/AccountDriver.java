@@ -1,4 +1,8 @@
 package com.revature.driver;
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.beans.Customer;
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountDAOImpl;
 import com.revature.dao.CustomerDAO;
@@ -17,6 +21,7 @@ public class AccountDriver {
 		
 		CustomerDAO customer = AccountDriver.getCustomerDAO();
 		AccountDAO accounts = AccountDriver.getAccountDAO();
+		
 		customer.createCustomer();
 		
 		

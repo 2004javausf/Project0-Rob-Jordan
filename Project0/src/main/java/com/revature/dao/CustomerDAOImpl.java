@@ -55,6 +55,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			userName = textInput.nextLine();
 			for (int i = 0; i < cList.size(); i++) {
 				while (userName.equals(cList.get(i).getUserName())) {
+					System.out.println("That name has been taken. Try another one.");
 					userName = textInput.nextLine();
 				}
 			}

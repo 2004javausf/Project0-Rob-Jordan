@@ -1,14 +1,20 @@
 package com.revature.menu;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.Account;
-import com.revarture.driver.AccountDriver;
+import com.revature.beans.Customer;
+import com.revature.dao.AccountDAOImpl;
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.io.CustomerIO;
+import com.revature.service.BankMethods;
 
 public class Menu {
 		
 		static Scanner scan = new Scanner(System.in);
 		public static void startMenu() {
+			CustomerIO.readCustomerFile();
 			System.out.println("Welcome to your favorite bank!");
 			System.out.println("Press 1 to Log in");
 			System.out.println("Press 2 for other services");
@@ -16,10 +22,27 @@ public class Menu {
 			int choice = scan.nextInt();
 			switch(choice) {
 			case 1:
-				transactionMenu();
+//				LogIn
+				Scanner textInput = new Scanner(System.in);
+				List<Customer> cList = CustomerDAOImpl.customerList;
+				List<Account> accList = AccountDAOImpl.accountList;
+				System.out.println("Enter your user name.");
+				String userName = textInput.nextLine();
+				System.out.println("Enter your password.");
+				String password = textInput.nextLine();
+				for (int i = 0; i <cList.size() ; i++) {
+					if(cList.get(i).getUserName().equals(userName) && cList.get(i).getPassword().equals(password)) {
+						Customer customer = cList.get(i);
+						Account account = accList.get(i);
+						if(cList.get(i).getAccountNumber() == accList.get(i).getAccountNumber())
+						account = accList.get(i);
+						
+						transactionMenu(accList, cList);
+					}
+				}
 				break;
 			case 2:
-				otherServicesMenu();
+//				otherServicesMenu();
 				break;
 			case 3:
 				System.out.println("Goodbye!");
@@ -31,7 +54,7 @@ public class Menu {
 			}
 		}
 		
-		public static void transactionMenu() {
+		public static void transactionMenu(Account account, Customer customer) {
 			System.out.println("What kind of transaction would you like to process?");
 			System.out.println("Press 1 to deposit");
 			System.out.println("Press 2 to withdaw");
@@ -41,10 +64,14 @@ public class Menu {
 			int choice = scan.nextInt();
 			switch(choice) {
 			case 1:
-				
+				System.out.println("How much do you want to deposit?");
+				double dep = scan.nextDouble();
+				BankMethods.deposit(account, dep);
 				break;
 			case 2:
-				
+				System.out.println("How much do you want to withdraw?");
+				double with = scan.nextDouble();
+				BankMethods.withdraw(account, with);
 				break;
 			case 3:
 				
