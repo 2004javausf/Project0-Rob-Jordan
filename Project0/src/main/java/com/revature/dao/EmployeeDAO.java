@@ -8,6 +8,6 @@ public interface EmployeeDAO {
 	
 	public void createEmployee();
 	public List<Object> getEmployee();
-	public Employee findEmployeeByName(String inputName);
+	public Employee findEmployeeByUserName(String inputUserName);
 
 }

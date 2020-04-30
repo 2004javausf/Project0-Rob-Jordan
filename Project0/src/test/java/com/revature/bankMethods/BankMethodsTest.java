@@ -9,8 +9,8 @@ import com.revature.beans.Account;
 import com.revature.service.BankMethods;
 
 class BankMethodsTest {
-	Account account1 = new Account(1, 100);
-	Account account2 = new Account(1, 200);
+	Account account1 = new Account(1, 100, "Checking");
+	Account account2 = new Account(1, 200, "Savings");
 	BankMethods activity = new BankMethods();
 
 	@Test

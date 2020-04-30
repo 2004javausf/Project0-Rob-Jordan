@@ -5,7 +5,10 @@
     <fullyQualifiedTypeName name="com.revature.io.IOWithCollections"/>
     <fullyQualifiedTypeName name="com.revature.roster.Roster"/>
     <fullyQualifiedTypeName name="com.revature.dao.CustomerDAOImpl"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.revature.dao.AccountDAOImpl"/>
     <fullyQualifiedTypeName name="com.revature.io.AccountsIO"/>
+    <fullyQualifiedTypeName name="com.revature.beans.Account"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.revature.service.BankMethods"/>
 </qualifiedTypeNameHistroy>
