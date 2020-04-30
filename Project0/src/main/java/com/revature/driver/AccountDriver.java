@@ -9,6 +9,7 @@ import com.revature.dao.CustomerDAO;
 import com.revature.dao.CustomerDAOImpl;
 import com.revature.io.AccountsIO;
 import com.revature.io.CustomerIO;
+import com.revature.menu.Menu;
 
 public class AccountDriver {
 	
@@ -22,11 +23,10 @@ public class AccountDriver {
 		CustomerDAO customer = AccountDriver.getCustomerDAO();
 		AccountDAO accounts = AccountDriver.getAccountDAO();
 		
-		customer.createCustomer();
+//		customer.createCustomer();
+
+		Menu.startMenu();
 		
-		
-		System.out.println(CustomerDAOImpl.customerList);
-		System.out.println(AccountDAOImpl.accountList);
 	}
 		
 	public static CustomerDAO getCustomerDAO() {

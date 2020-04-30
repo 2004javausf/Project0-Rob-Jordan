@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.revature.beans.Account;
 import com.revature.beans.Customer;
+import com.revature.beans.Employee;
 import com.revature.io.AccountsIO;
 import com.revature.io.CustomerIO;
 import com.revature.service.BankMethods;
@@ -88,23 +89,47 @@ public class CustomerDAOImpl implements CustomerDAO {
 			
 		}
 	
-	
-	public static void main(String[] args) {
-		CustomerIO.readCustomerFile();
-		AccountsIO.readAccountFile();
-		BankMethods activity = new BankMethods();
-//		System.out.println(CustomerDAOImpl.customerList);
-//		System.out.println(AccountDAOImpl.accountList);
-		List<Customer> cList = CustomerDAOImpl.customerList;
-		List<Account>  accList = AccountDAOImpl.accountList;
-		for (int i = 0; i < cList.size()-1; i++) {
-			if(accList.get(i).getAccountNumber() == cList.get(i).getAccountNumber()) {
-				activity.deposit(accList.get(i), 50);
+	public static Customer findCustomerByUserName(String inputUserName) {
+		for(int i = 0; i < CustomerDAOImpl.customerList.size(); i++) {
+			String name = CustomerDAOImpl.customerList.get(i).getUserName();
+			if(inputUserName.equals(name)) {
+				return CustomerDAOImpl.customerList.get(i);
 			}
 		}
-		System.out.println(CustomerDAOImpl.customerList);
-		System.out.println(AccountDAOImpl.accountList);
+		System.out.println("Employee not found");
+		
+		return null;
 	}
+	
+	public static Customer findCustomerPassword(String inputPassword) {
+		for(int i = 0; i < CustomerDAOImpl.customerList.size(); i++) {
+			String password = CustomerDAOImpl.customerList.get(i).getPassword();
+			if(inputPassword.equals(password)) {
+				return CustomerDAOImpl.customerList.get(i);
+			}
+		}
+		System.out.println("Password does not match");
+		
+		return null;
+	}
+	
+	
+//	public static void main(String[] args) {
+//		CustomerIO.readCustomerFile();
+//		AccountsIO.readAccountFile();
+//		BankMethods activity = new BankMethods();
+////		System.out.println(CustomerDAOImpl.customerList);
+////		System.out.println(AccountDAOImpl.accountList);
+//		List<Customer> cList = CustomerDAOImpl.customerList;
+//		List<Account>  accList = AccountDAOImpl.accountList;
+//		for (int i = 0; i < cList.size()-1; i++) {
+//			if(accList.get(i).getAccountNumber() == cList.get(i).getAccountNumber()) {
+//				activity.deposit(accList.get(i), 50);
+//			}
+//		}
+//		System.out.println(CustomerDAOImpl.customerList);
+//		System.out.println(AccountDAOImpl.accountList);
+//	}
 
 //	@Override
 //	public List<Customer> getCustomers() {

@@ -22,11 +22,11 @@ public class Customer implements Serializable {
 	private int statusCode;
 	private boolean isApproved;
 	
-	public Customer() {
-		super();
-		CustomerDAOImpl.customerList.add(this);
-		CustomerIO.writeCustomerFile();
-	}
+//	public Customer() {
+//		super();
+//		CustomerDAOImpl.customerList.add(this);
+//		CustomerIO.writeCustomerFile();
+//	}
 	
 	
 	public Customer(int customerId, String firstName, String lastName, String userName, String password,
