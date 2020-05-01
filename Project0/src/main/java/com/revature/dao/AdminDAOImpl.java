@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.revature.beans.Account;
 import com.revature.beans.Admin;
+import com.revature.beans.Customer;
 import com.revature.beans.Employee;
 import com.revature.io.AccountsIO;
 import com.revature.io.AdminIO;
@@ -23,7 +24,6 @@ public class AdminDAOImpl implements AdminDAO{
 		Scanner intInput = new Scanner(System.in);
 		Scanner textInput = new Scanner(System.in);
 		Scanner longInput = new Scanner(System.in);
-		int answer = 0;
 
 		int adminId;
 		String firstName;
@@ -71,6 +71,18 @@ public class AdminDAOImpl implements AdminDAO{
 		
 		return null;
 	}
+	
+	public static Admin findAdminPassword(String inputPassword) {
+		for(int i = 0; i < AdminDAOImpl.adminList.size(); i++) {
+			String password = AdminDAOImpl.adminList.get(i).getPassword();
+			if(inputPassword.equals(password)) {
+				return AdminDAOImpl.adminList.get(i);
+			}
+		}
+		System.out.println("Password does not match");
+		
+		return null;
+	}	
 
 	public List<Object> getAdmin() {
 		// TODO Auto-generated method stub

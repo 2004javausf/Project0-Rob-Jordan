@@ -22,7 +22,17 @@ public class BankMethods {
 		AccountsIO.writeAccountFile();
 	}
 	
-	public static void approveDeny(Customer customer) {
+	public static void employeeApproveDeny(Customer customer) {
+		// Only allows employee to set isApproved to true
+		if(customer.getIsApproved() == false) {
+		customer.setApproved(true); 	
+		}
+	}
+	
+	
+	public static void adminApproveDeny(Customer customer) {
+		//Can set true or false for isApproved
+		//Or cancel.
 		if(customer.getIsApproved() == true) {
 		customer.setApproved(false); 	
 		}else {

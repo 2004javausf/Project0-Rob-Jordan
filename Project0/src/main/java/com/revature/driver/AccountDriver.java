@@ -19,21 +19,9 @@ public class AccountDriver {
 	public static void main(String[] args) {
 		CustomerIO.readCustomerFile();
 		AccountsIO.readAccountFile();
-		
-		CustomerDAO customer = AccountDriver.getCustomerDAO();
-		AccountDAO accounts = AccountDriver.getAccountDAO();
-		
-//		customer.createCustomer();
 
 		Menu.startMenu();
 		
 	}
-		
-	public static CustomerDAO getCustomerDAO() {
-		return new CustomerDAOImpl();
-	}
-	
-	public static AccountDAO getAccountDAO() {
-		return new AccountDAOImpl();
-	}
+
 }
