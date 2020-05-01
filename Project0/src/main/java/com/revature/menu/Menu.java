@@ -46,9 +46,9 @@ public class Menu {
 				System.out.println("Enter your password.");
 				String password = textInput.nextLine();
 				
-				CustomerDAOImpl.findCustomerPassword(password);
+				Customer cuPass = CustomerDAOImpl.findCustomerPassword(password);
 				Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
-				if(customer == null) 
+				if(customer == null || cuPass == null) 
 					startMenu();
 				Account account = AccountDAOImpl.findByAccountNumber(customer.getAccountNumber());
 				if(customer.getIsApproved() == false) {
@@ -170,9 +170,9 @@ public class Menu {
 					String  userInput = employeeLogIn.nextLine();
 					System.out.println("Enter your password");
 					String inputPassword = employeeLogIn.nextLine();
-					EmployeeIO.findEmployeePassword(inputPassword);
+					Employee empass = EmployeeIO.findEmployeePassword(inputPassword);
 					Employee employee = EmployeeIO.findEmployeeByUserName(userInput);
-					if(employee == null) {
+					if(employee == null || empass == null) {
 						System.out.println("Credentials do not match");
 						otherServicesMenu();
 					}
@@ -185,11 +185,12 @@ public class Menu {
 					Admin admin = AdminDAOImpl.findAdminByUserName(adminInput);
 					System.out.println("Enter your password");
 					String passInput = adminIn.nextLine();
-					if(admin == null) {
+					Admin password = AdminDAOImpl.findAdminPassword(passInput);
+					if(admin == null || password == null) {
 						System.out.println("Credentials do not match!");
 						otherServicesMenu();
 					}
-					AdminDAOImpl.findAdminPassword(passInput);
+					
 					adminMenu();
 					break;
 				case 4: 
