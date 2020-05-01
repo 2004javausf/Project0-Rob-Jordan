@@ -32,7 +32,7 @@ public class Menu {
 			AdminIO.readAdminFile();
 			System.out.println("Welcome to J&R bank!");
 			System.out.println("Press 1.) to Log in");
-			System.out.println("Press 2.) for other services");
+			System.out.println("Press 2.) for Other Services");
 			System.out.println("Press 3.) Exit");
 			int choice1 = scan.nextInt();
 			switch(choice1) {
@@ -51,14 +51,18 @@ public class Menu {
 				if(customer == null) 
 					startMenu();
 				Account account = AccountDAOImpl.findByAccountNumber(customer.getAccountNumber());
-				
+				if(customer.getIsApproved() == false) {
+					System.out.println(" Your current account status is pending. \n Please check back when your account has been approved.");
+					startMenu();
+				}
 				transactionMenu(account, customer);
 				break;
 			case 2:
 				otherServicesMenu();
 				break;
 			case 3:
-				System.out.println("Goodbye!");
+				System.out.println("Thank you for Banking With Us!");
+				System.exit(1);
 				break;
 			default:
 				System.out.println("Please enter a valid option.");
@@ -128,10 +132,10 @@ public class Menu {
 		public static void otherServicesMenu() {
 			System.out.println("What would you like to do?");
 			System.out.println("Press 1.) to Create an account");
-			System.out.println("Press 2.) to Log in as an Employee");
-			System.out.println("Press 3.) to Log in as an Administrator");
+			System.out.println("Press 2.) to log in as an Employee");
+			System.out.println("Press 3.) to log in as an Administrator");
 			System.out.println("Press 4.) for Main Menu");
-			System.out.println("Press 5.) to exit.");
+			System.out.println("Press 5.) Exit.");
 			int choice3 = scan.nextInt();
 			switch(choice3) {	
 				case 1:
@@ -210,7 +214,7 @@ public class Menu {
 			Scanner in = new Scanner(System.in);
 			System.out.println("Press 1.) to View Customer List");
 			System.out.println("Press 2.) to View Customer's information");
-			System.out.println("Press 3.) to Approve/Deny Applications");
+			System.out.println("Press 3.) to Approve Applications");
 			System.out.println("Press 4.) for Main Menu");
 			System.out.println("Press 5.) to exit.");
 			choice5 = in.nextInt();
@@ -233,11 +237,23 @@ public class Menu {
 					break;
 				case 3:
 					Scanner textInput2 = new Scanner(System.in);
-					System.out.println("Enter the Customer's Username.");
+					System.out.println("Enter the Customer's user name.");
 					String userName2 = textInput2.nextLine();				
 					Customer customer2 = CustomerDAOImpl.findCustomerByUserName(userName2);
-					BankMethods.emplyeeApproveDeny(customer2);
-					AccountsIO.writeAccountFile();
+					if(customer2.getIsApproved() == false) {
+					System.out.println(customer2.getFirstName() + "'s " + "application status is " + customer2.getIsApproved() + "\n Would you like to approve? y/n?");
+	
+						if(textInput2.nextLine().equalsIgnoreCase("y")) {
+							System.out.println("Ok " + customer2.getFirstName() + " has been approved!");
+							BankMethods.employeeApproveDeny(customer2);
+							CustomerIO.writeCustomerFile();
+						}else {
+							System.out.println("Ok, the status has stayed the same.");
+						}
+					
+					}else {
+						System.out.println("This applicant has been approved already.");
+					}
 					employeeMenu();
 					break;
 				case 4: 
