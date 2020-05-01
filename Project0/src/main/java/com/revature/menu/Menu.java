@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.Account;
+import com.revature.beans.Admin;
 import com.revature.beans.Customer;
 import com.revature.beans.Employee;
 import com.revature.dao.AccountDAOImpl;
@@ -13,6 +14,7 @@ import com.revature.dao.CustomerDAO;
 import com.revature.dao.CustomerDAOImpl;
 import com.revature.dao.EmployeeDAO;
 import com.revature.dao.EmployeeDAOImpl;
+import com.revature.io.AccountsIO;
 import com.revature.io.AdminIO;
 import com.revature.io.CustomerIO;
 import com.revature.io.EmployeeIO;
@@ -28,10 +30,10 @@ public class Menu {
 			CustomerIO.readCustomerFile();
 			EmployeeIO.readEmployeeFile();
 			AdminIO.readAdminFile();
-			System.out.println("Welcome to your favorite bank!");
+			System.out.println("Welcome to J&R bank!");
 			System.out.println("Press 1.) to Log in");
 			System.out.println("Press 2.) for other services");
-			System.out.println("Press 3.) to exit");
+			System.out.println("Press 3.) Exit");
 			int choice1 = scan.nextInt();
 			switch(choice1) {
 			case 1:
@@ -49,6 +51,7 @@ public class Menu {
 				if(customer == null) 
 					startMenu();
 				Account account = AccountDAOImpl.findByAccountNumber(customer.getAccountNumber());
+				
 				transactionMenu(account, customer);
 				break;
 			case 2:
@@ -83,6 +86,7 @@ public class Menu {
 				double dep = doubleScan.nextDouble();
 				System.out.println("Your new balance is: " + "$" +(account.getAccountBalance() + dep));
 				BankMethods.deposit(account, dep);
+				AccountsIO.writeAccountFile();
 				transactionMenu(account, customer);
 				break;
 			case 2:
@@ -91,6 +95,7 @@ public class Menu {
 				double with = scan.nextDouble();
 				System.out.println("Your new balance is: " + "$" + (account.getAccountBalance() - with));
 				BankMethods.withdraw(account, with);
+				AccountsIO.writeAccountFile();
 				transactionMenu(account, customer);
 				break;
 			case 3:
@@ -102,6 +107,7 @@ public class Menu {
 				System.out.println(customer.getFirstName()+ "'s "+ "acccount balance is: $" + account.getAccountBalance());
 				double amount = dblInput.nextDouble();
 				BankMethods.transfer(account, account2, amount);
+				AccountsIO.writeAccountFile();
 				System.out.println(customer.getFirstName()+ "'s "+ "acccount balance is now: $" + (account.getAccountBalance()));
 				transactionMenu(account, customer);
 				break;
@@ -133,7 +139,6 @@ public class Menu {
 					System.out.println("Press 2.) To register as an employee");
 					System.out.println("Press 3.) To regiser as an admin");
 					System.out.println("Press 4.) For Main Menu");
-					System.out.println("Press 5.) Exit");
 					int choice4 = scan.nextInt(); 
 					switch(choice4) {
 					case 1:
@@ -148,6 +153,9 @@ public class Menu {
 						getAdminDAO().createAdmin();
 						otherServicesMenu();
 						break;
+					case 4:
+						System.out.println("Taking you the Main Menu");
+						startMenu();
 					default:
 					}
 					
@@ -161,7 +169,7 @@ public class Menu {
 					EmployeeIO.findEmployeePassword(inputPassword);
 					Employee employee = EmployeeIO.findEmployeeByUserName(userInput);
 					if(employee == null) {
-						System.out.println("Credentials don't match");
+						System.out.println("Credentials do not match");
 						otherServicesMenu();
 					}
 					employeeMenu();
@@ -170,9 +178,13 @@ public class Menu {
 					Scanner adminIn = new Scanner(System.in);
 					System.out.println("Enter your user name");
 					String adminInput = adminIn.nextLine();
-					AdminDAOImpl.findAdminByUserName(adminInput);
+					Admin admin = AdminDAOImpl.findAdminByUserName(adminInput);
 					System.out.println("Enter your password");
 					String passInput = adminIn.nextLine();
+					if(admin == null) {
+						System.out.println("Credentials do not match!");
+						otherServicesMenu();
+					}
 					AdminDAOImpl.findAdminPassword(passInput);
 					adminMenu();
 					break;
@@ -225,6 +237,7 @@ public class Menu {
 					String userName2 = textInput2.nextLine();				
 					Customer customer2 = CustomerDAOImpl.findCustomerByUserName(userName2);
 					BankMethods.emplyeeApproveDeny(customer2);
+					AccountsIO.writeAccountFile();
 					employeeMenu();
 					break;
 				case 4: 
@@ -247,7 +260,7 @@ public class Menu {
 			Scanner sca = new Scanner(System.in);
 			Scanner inte = new Scanner(System.in);
 			System.out.println("Press 1.) to View Customer List");
-			System.out.println("Press 2.) to Edit Customer's information");
+			System.out.println("Press 2.) to View Customer's information");
 			System.out.println("Press 3.) to Approve/Deny Applications");
 			System.out.println("Press 4.) to Make Transactions on a User's Account");
 			System.out.println("Press 5.) for Main Menu");
@@ -281,6 +294,7 @@ public class Menu {
 					String answer = textInput2.nextLine();
 					if(answer.equalsIgnoreCase("y")) {
 						BankMethods.adminApproveDeny(customer2);	
+						CustomerIO.writeCustomerFile();
 						System.out.println("Ok status has been changed!");
 						adminMenu();
 					}else {
@@ -301,7 +315,7 @@ public class Menu {
 					break;
 			default:
 				System.out.println("Please enter a valid choice");
-				employeeMenu();
+				adminMenu();
 				break;
 			}
 		}
@@ -330,6 +344,7 @@ public class Menu {
 				System.out.println("How much do you want to deposit?");
 				double amount = numDouble.nextDouble();
 				BankMethods.deposit(account, amount);
+				AccountsIO.writeAccountFile();
 				System.out.println("Your new balance is: " + "$" +(account.getAccountBalance()));
 				adminTransactionsMenu();
 				break;
@@ -343,6 +358,7 @@ public class Menu {
 				System.out.println("How much do you want to withdraw?");
 				double amount2 = numDouble.nextDouble();
 				BankMethods.withdraw(otherAccount, amount2);
+				AccountsIO.writeAccountFile();
 				System.out.println("Your new balance is: " + "$" + (otherAccount.getAccountBalance()));
 				adminTransactionsMenu();
 				break;
@@ -361,6 +377,7 @@ public class Menu {
 				System.out.println(customer2.getFirstName()+ "'s "+ "acccount balance is: $" + account2.getAccountBalance());
 				double amount3 = numDouble.nextDouble();
 				BankMethods.transfer(account1, account2, amount3);
+				AccountsIO.writeAccountFile();
 				System.out.println(customer1.getFirstName()+ "'s "+ "acccount balance is now: $" + (account1.getAccountBalance()));
 				System.out.println(customer2.getFirstName()+ "'s "+ "acccount balance is now: $" + (account2.getAccountBalance()));
 				adminTransactionsMenu();
@@ -369,6 +386,9 @@ public class Menu {
 				System.out.println("Enter the user name of the account you want to access?");
 				String userInput = ner.nextLine();
 				Customer theCustomer = CustomerDAOImpl.findCustomerByUserName(userInput);
+				if(theCustomer == null) {
+					adminTransactionsMenu();
+				}
 				editMenu(theCustomer);
 				break;
 			case 5:
@@ -391,52 +411,57 @@ public class Menu {
 			Scanner textScan = new Scanner(System.in);
 			Scanner longScan = new Scanner(System.in);
 			System.out.println("What would you like to edit?");
-			System.out.println("1.) First Name   2.) Last Name   3.)User Name   4.)Password   5.)Telephone Number");
+			System.out.println("1.) First Name   2.) Last Name   3.)User Name   4.)Password   5.)Telephone Number 6.) Admin Menu");
 			int answer = intScan.nextInt();
 			switch (answer) {
 			case 1:
 				System.out.println("Please enter a first name.");
 				String firstName = textScan.nextLine();
 				customer.setFirstName(firstName);
+				CustomerIO.writeCustomerFile();
 				System.out.println("First name has been updated.");
 				System.out.println(customer);
-				editMenu(customer);
+				adminTransactionsMenu();
 				break;
 
 			case 2:
 				System.out.println("Please enter a last name.");
 				String lastName = textScan.nextLine();
 				customer.setLastName(lastName);
+				CustomerIO.writeCustomerFile();
 				System.out.println("Last name has been updated.");
 				System.out.println(customer);
-				editMenu(customer);
+				adminTransactionsMenu();
 				break;
 
 			case 3:
 				System.out.println("Please enter a new user name.");
 				String userName = textScan.nextLine();
 				customer.setUserName(userName);
+				CustomerIO.writeCustomerFile();
 				System.out.println("User Name has been updated.");
 				System.out.println(customer);
-				editMenu(customer);
+				adminTransactionsMenu();
 				break;
 
 			case 4:
 				System.out.println("Please enter a new password.");
 				String password = textScan.nextLine();
 				customer.setPassword(password);
+				CustomerIO.writeCustomerFile();
 				System.out.println("Password has been updated.");
 				System.out.println(customer);
-				editMenu(customer);
+				adminTransactionsMenu();
 				break;
 
 			case 5:
 				System.out.println("Please enter the new number.");
 				Long telephone = longScan.nextLong();
 				customer.setPhoneNumber(telephone);
+				CustomerIO.writeCustomerFile();
 				System.out.println("Number has been updated.");
 				System.out.println(customer);
-				editMenu(customer);
+				adminTransactionsMenu();
 				break;
 			case 6:
 				System.out.println("Return to Admin Transaction's Menu");
