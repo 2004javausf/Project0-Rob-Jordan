@@ -2570,3 +2570,11 @@
 2020-05-01 16:47:46,842 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/main/resources
 2020-05-01 16:47:46,844 [Worker-17: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-05-01 16:47:46,845 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/test/resources
+2020-05-01 16:56:52,660 [Worker-21: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-05-01 16:56:52,660 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/main/resources
+2020-05-01 16:56:52,662 [Worker-21: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-05-01 16:56:52,662 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/test/resources
+2020-05-01 16:56:54,570 [Worker-24: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-05-01 16:56:54,570 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/main/resources
+2020-05-01 16:56:54,571 [Worker-24: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-05-01 16:56:54,572 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/test/resources

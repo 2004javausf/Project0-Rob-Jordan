@@ -1,4 +1,4 @@
-package com.revature.bankMethods;
+package com.revature.employeemethodstest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,8 +9,8 @@ import com.revature.io.EmployeeIO;
 
 class EmployeeMethodsTest {
 	
-	Employee rob = new Employee(1, "Rob", "Torres", "Robster", "1234",2);
-	Employee jP = new Employee(2, "JPeter", "Parker", "The Guy", "4321",2);
+	Employee rob = new Employee(1, "Rob", "Torres", "Robster", "1234", 2);
+	Employee jP = new Employee(2, "JPeter", "Parker", "The Guy", "4321", 2);
 
 	@Test
 	void userNameValidationTest() {

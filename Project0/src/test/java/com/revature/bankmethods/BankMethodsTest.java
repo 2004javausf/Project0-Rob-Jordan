@@ -1,4 +1,4 @@
-package com.revature.bankMethods;
+package com.revature.bankmethods;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
