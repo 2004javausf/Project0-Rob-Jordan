@@ -222,7 +222,7 @@ public class Menu {
 			switch (choice5) {
 				case 1:
 					System.out.println(CustomerDAOImpl.customerList);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sc.next();
 					employeeMenu();		
 				break;
@@ -232,7 +232,7 @@ public class Menu {
 					String userName = textInput.nextLine();				
 					Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
 					System.out.println(customer);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sc.next();
 					employeeMenu();	
 					break;
@@ -287,7 +287,7 @@ public class Menu {
 			switch (choice6) {
 				case 1:
 					System.out.println(CustomerDAOImpl.customerList);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sca.next();
 					adminMenu();		
 				break;
@@ -297,7 +297,7 @@ public class Menu {
 					String userName = textInput.nextLine();				
 					Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
 					System.out.println(customer);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sca.next();
 					adminMenu();	
 					break;

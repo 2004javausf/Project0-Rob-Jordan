@@ -2373,3 +2373,7 @@
 2020-05-01 10:10:05,500 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/main/resources
 2020-05-01 10:10:05,502 [Worker-13: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-05-01 10:10:05,502 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/test/resources
+2020-05-01 10:24:33,591 [Worker-13: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-05-01 10:24:33,591 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/main/resources
+2020-05-01 10:24:33,594 [Worker-13: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-05-01 10:24:33,594 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jordanparker/Desktop/Development/Project0-Rob-Jordan/Project0/src/test/resources
