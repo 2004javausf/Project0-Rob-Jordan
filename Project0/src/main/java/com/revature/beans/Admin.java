@@ -1,10 +1,16 @@
 package com.revature.beans;
 
+import java.io.Serializable;
+
 import com.revature.dao.AdminDAOImpl;
 import com.revature.io.AdminIO;
 
-public class Admin {
+public class Admin implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4723938589558393223L;
 	private int adminID;
 	private String firstName;
 	private String lastName;
