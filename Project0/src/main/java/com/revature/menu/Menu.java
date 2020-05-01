@@ -46,9 +46,9 @@ public class Menu {
 				System.out.println("Enter your password.");
 				String password = textInput.nextLine();
 				
-				CustomerDAOImpl.findCustomerPassword(password);
+				Customer cuPass = CustomerDAOImpl.findCustomerPassword(password);
 				Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
-				if(customer == null) 
+				if(customer == null || cuPass == null) 
 					startMenu();
 				Account account = AccountDAOImpl.findByAccountNumber(customer.getAccountNumber());
 				if(customer.getIsApproved() == false) {
@@ -88,7 +88,14 @@ public class Menu {
 				System.out.println("Your current balanace is: "+ "$" +account.getAccountBalance());
 				System.out.println("How much do you want to deposit?");
 				double dep = doubleScan.nextDouble();
-				System.out.println("Your new balance is: " + "$" +(account.getAccountBalance() + dep));
+				if(dep <= 0) {
+					double correctAmount = dep;
+					while(correctAmount <= 0) {
+						System.out.println("Please enter an amount greater than $0");
+						 correctAmount = doubleScan.nextDouble();
+					}
+					dep = correctAmount;
+				}
 				BankMethods.deposit(account, dep);
 				AccountsIO.writeAccountFile();
 				transactionMenu(account, customer);
@@ -97,7 +104,14 @@ public class Menu {
 				System.out.println("Your current balanace is: "+ "$" +account.getAccountBalance());
 				System.out.println("How much do you want to withdraw?");
 				double with = scan.nextDouble();
-				System.out.println("Your new balance is: " + "$" + (account.getAccountBalance() - with));
+				if(with <= 0) {
+					double correctAmount = with;
+					while(correctAmount <= 0) {
+						System.out.println("Please enter an amount greater than $0");
+						 correctAmount = doubleScan.nextDouble();
+					}
+					with = correctAmount;
+				}
 				BankMethods.withdraw(account, with);
 				AccountsIO.writeAccountFile();
 				transactionMenu(account, customer);
@@ -110,6 +124,14 @@ public class Menu {
 				System.out.println("How much money do you want to transfer?");
 				System.out.println(customer.getFirstName()+ "'s "+ "acccount balance is: $" + account.getAccountBalance());
 				double amount = dblInput.nextDouble();
+				if(amount <= 0) {
+					double correctAmount = amount;
+					while(correctAmount <= 0) {
+						System.out.println("Please enter an amount greater than $0");
+						 correctAmount = doubleScan.nextDouble();
+					}
+					amount = correctAmount;
+				}
 				BankMethods.transfer(account, account2, amount);
 				AccountsIO.writeAccountFile();
 				System.out.println(customer.getFirstName()+ "'s "+ "acccount balance is now: $" + (account.getAccountBalance()));
@@ -148,13 +170,16 @@ public class Menu {
 					case 1:
 						getCustomerDAO().createCustomer();
 						System.out.println("Your application was submitted! Please check status after 24 hours");
+						startMenu();
 						break;
 					case 2:
 						getEmployeeDAO().createEmployee();
+						System.out.println("Employee created!");
 						otherServicesMenu();
 						break;
 					case 3:
 						getAdminDAO().createAdmin();
+						System.out.println("Admin created!");
 						otherServicesMenu();
 						break;
 					case 4:
@@ -170,9 +195,9 @@ public class Menu {
 					String  userInput = employeeLogIn.nextLine();
 					System.out.println("Enter your password");
 					String inputPassword = employeeLogIn.nextLine();
-					EmployeeIO.findEmployeePassword(inputPassword);
+					Employee empass = EmployeeIO.findEmployeePassword(inputPassword);
 					Employee employee = EmployeeIO.findEmployeeByUserName(userInput);
-					if(employee == null) {
+					if(employee == null || empass == null) {
 						System.out.println("Credentials do not match");
 						otherServicesMenu();
 					}
@@ -185,11 +210,12 @@ public class Menu {
 					Admin admin = AdminDAOImpl.findAdminByUserName(adminInput);
 					System.out.println("Enter your password");
 					String passInput = adminIn.nextLine();
-					if(admin == null) {
+					Admin password = AdminDAOImpl.findAdminPassword(passInput);
+					if(admin == null || password == null) {
 						System.out.println("Credentials do not match!");
 						otherServicesMenu();
 					}
-					AdminDAOImpl.findAdminPassword(passInput);
+					
 					adminMenu();
 					break;
 				case 4: 
@@ -221,7 +247,7 @@ public class Menu {
 			switch (choice5) {
 				case 1:
 					System.out.println(CustomerDAOImpl.customerList);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sc.next();
 					employeeMenu();		
 				break;
@@ -231,7 +257,7 @@ public class Menu {
 					String userName = textInput.nextLine();				
 					Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
 					System.out.println(customer);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sc.next();
 					employeeMenu();	
 					break;
@@ -286,7 +312,7 @@ public class Menu {
 			switch (choice6) {
 				case 1:
 					System.out.println(CustomerDAOImpl.customerList);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sca.next();
 					adminMenu();		
 				break;
@@ -296,7 +322,7 @@ public class Menu {
 					String userName = textInput.nextLine();				
 					Customer customer = CustomerDAOImpl.findCustomerByUserName(userName);
 					System.out.println(customer);
-					System.out.println("Press any key to go back to the employee menu");
+					System.out.println("Press any key then 'enter' to go back to the employee menu");
 					sca.next();
 					adminMenu();	
 					break;

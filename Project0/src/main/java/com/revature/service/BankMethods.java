@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.Scanner;
+
 import com.revature.beans.Account;
 import com.revature.beans.Customer;
 import com.revature.io.AccountsIO;
@@ -8,11 +10,14 @@ public class BankMethods {
 	
 	public static void withdraw(Account account, double amount) {
 		account.setAccountBalance(account.getAccountBalance()-amount);
+		System.out.println("Your new balance is: $"+ (account.getAccountBalance()));
 		AccountsIO.writeAccountFile();
+
 	}
 	
 	public static void deposit(Account account, double amount) {
 		account.setAccountBalance(account.getAccountBalance() + amount);
+		System.out.println("Your new balance is: $"+ (account.getAccountBalance()));
 		AccountsIO.writeAccountFile();
 	}
 	
