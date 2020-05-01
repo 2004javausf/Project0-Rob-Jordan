@@ -88,7 +88,14 @@ public class Menu {
 				System.out.println("Your current balanace is: "+ "$" +account.getAccountBalance());
 				System.out.println("How much do you want to deposit?");
 				double dep = doubleScan.nextDouble();
-				System.out.println("Your new balance is: " + "$" +(account.getAccountBalance() + dep));
+				if(dep <= 0) {
+					double correctAmount = dep;
+					while(correctAmount <= 0) {
+						System.out.println("Please enter an amount greater than $0");
+						 correctAmount = doubleScan.nextDouble();
+					}
+					dep = correctAmount;
+				}
 				BankMethods.deposit(account, dep);
 				AccountsIO.writeAccountFile();
 				transactionMenu(account, customer);
@@ -97,7 +104,14 @@ public class Menu {
 				System.out.println("Your current balanace is: "+ "$" +account.getAccountBalance());
 				System.out.println("How much do you want to withdraw?");
 				double with = scan.nextDouble();
-				System.out.println("Your new balance is: " + "$" + (account.getAccountBalance() - with));
+				if(with <= 0) {
+					double correctAmount = with;
+					while(correctAmount <= 0) {
+						System.out.println("Please enter an amount greater than $0");
+						 correctAmount = doubleScan.nextDouble();
+					}
+					with = correctAmount;
+				}
 				BankMethods.withdraw(account, with);
 				AccountsIO.writeAccountFile();
 				transactionMenu(account, customer);
@@ -110,6 +124,14 @@ public class Menu {
 				System.out.println("How much money do you want to transfer?");
 				System.out.println(customer.getFirstName()+ "'s "+ "acccount balance is: $" + account.getAccountBalance());
 				double amount = dblInput.nextDouble();
+				if(amount <= 0) {
+					double correctAmount = amount;
+					while(correctAmount <= 0) {
+						System.out.println("Please enter an amount greater than $0");
+						 correctAmount = doubleScan.nextDouble();
+					}
+					amount = correctAmount;
+				}
 				BankMethods.transfer(account, account2, amount);
 				AccountsIO.writeAccountFile();
 				System.out.println(customer.getFirstName()+ "'s "+ "acccount balance is now: $" + (account.getAccountBalance()));
@@ -148,13 +170,16 @@ public class Menu {
 					case 1:
 						getCustomerDAO().createCustomer();
 						System.out.println("Your application was submitted! Please check status after 24 hours");
+						startMenu();
 						break;
 					case 2:
 						getEmployeeDAO().createEmployee();
+						System.out.println("Employee created!");
 						otherServicesMenu();
 						break;
 					case 3:
 						getAdminDAO().createAdmin();
+						System.out.println("Admin created!");
 						otherServicesMenu();
 						break;
 					case 4:
