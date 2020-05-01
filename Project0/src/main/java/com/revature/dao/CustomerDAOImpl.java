@@ -86,7 +86,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 				return CustomerDAOImpl.customerList.get(i);
 			}
 		}
-		System.out.println("Employee not found");
+		System.out.println("Customer not found");
 		
 		return null;
 	}
